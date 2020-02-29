@@ -1,0 +1,58 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div >
+    <table class="unstriped">
+        <thead>
+            <th > nro</th>
+            <th > nro</th>
+            <th > nro</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>info1</td>
+                <td>info2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form>
+        <div class="grid-container">
+            <div style="max-width:30%;">
+                <div>
+                    <label>Input Field</label>
+                    <input type="text" />
+                </div>
+                <div>
+                    <label>Dropdown
+                        <select>
+                            <option value="1">first option</option>
+                            <option value="2">second option</option>
+                            <option value="3">third option</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <fieldset class="fieldset">
+                        <legend>Checkbox</legend>
+                        <input id="box1" type="checkbox" /><label for="box1"> check1</label>
+                        <input id="box2" type="checkbox" /><label for="box2">check2</label>
+
+                    </fieldset>
+                </div>
+                <div>
+                    <label>select from these</label>
+                    <select multiple>
+                        <option value="choice1">choice1</option>
+                        <option value="choice2">choice2</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
