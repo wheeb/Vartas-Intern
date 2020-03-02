@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Juho\\source\\repos\\VartasFront\\VartasFront.csproj",
+      "projectUniqueName": "C:\\Users\\Juho\\source\\repos\\Vartas\\VartasFront\\VartasFront.csproj",
       "projectName": "VartasFront",
-      "projectPath": "C:\\Users\\Juho\\source\\repos\\VartasFront\\VartasFront.csproj",
+      "projectPath": "C:\\Users\\Juho\\source\\repos\\Vartas\\VartasFront\\VartasFront.csproj",
       "packagesPath": "C:\\Users\\Juho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Juho\\source\\repos\\VartasFront\\obj\\",
+      "outputPath": "C:\\Users\\Juho\\source\\repos\\Vartas\\VartasFront\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Juho\\AppData\\Roaming\\NuGet\\NuGet.Config",

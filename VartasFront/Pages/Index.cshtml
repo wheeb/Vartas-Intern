@@ -4,55 +4,91 @@
     ViewData["Title"] = "Home page";
 }
 
-<div >
-    <table class="unstriped">
-        <thead>
-            <th > nro</th>
-            <th > nro</th>
-            <th > nro</th>
-        </thead>
-        <tbody>
-            <tr>
-                <th>1</th>
-                <td>info1</td>
-                <td>info2</td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <div class="form-box border-bottom">
+            <form>
+                <div class="grid-container">
+                    <div>
+                        <div>
+                            <label>Input Field</label>
+                            <input type="text" />
+                        </div>
+                        <div>
+                            <label>
+                                Dropdown
+                                <select>
+                                    <option value="1">first option</option>
+                                    <option value="2">second option</option>
+                                    <option value="3">third option</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <fieldset class="fieldset">
+                                <legend>Checkbox</legend>
+                                <input id="box1" type="checkbox" /><label for="box1"> check1</label>
+                                <input id="box2" type="checkbox" /><label for="box2">check2</label>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <label>select from these</label>
+                            <select multiple>
+                                <option value="choice1">choice1</option>
+                                <option value="choice2">choice2</option>
+                            </select>
+                        </div>
 
-    <form>
-        <div class="grid-container">
-            <div style="max-width:30%;">
-                <div>
-                    <label>Input Field</label>
-                    <input type="text" />
+                    </div>
                 </div>
-                <div>
-                    <label>Dropdown
-                        <select>
-                            <option value="1">first option</option>
-                            <option value="2">second option</option>
-                            <option value="3">third option</option>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <fieldset class="fieldset">
-                        <legend>Checkbox</legend>
-                        <input id="box1" type="checkbox" /><label for="box1"> check1</label>
-                        <input id="box2" type="checkbox" /><label for="box2">check2</label>
-
-                    </fieldset>
-                </div>
-                <div>
-                    <label>select from these</label>
-                    <select multiple>
-                        <option value="choice1">choice1</option>
-                        <option value="choice2">choice2</option>
-                    </select>
-                </div>
-
-            </div>
+                <input type="submit" value="Submit">
+            </form>
+            <br />
         </div>
-    </form>
-</div>
+        <br />
+        <div class="tableTarget container">
+            <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for currencies" />
+        </div>
+    </div>
+
+<script type="text/javascript">
+	function searchFunction() {
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("searchInput")
+		filter = input.value.toUpperCase();
+		table = document.getElementById("my-new-list")
+		tr = table.getElementsByTagName("tr");
+        //loops trough every row on the table, if the row does not match searchInput -> hide 
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	};
+
+	$(document).ready(function () {
+		$.getJSON("https://api.coinranking.com/v1/public/coins", function (data) {
+			var items = [];
+			var i = 0;
+            //push header for the table
+			items.push("<thead><th> Currency name</th><th> Current exchange price</th></thead>");
+			$.each(data.data.coins[i], function (name, id) {
+				items.push("<tr id='" + data.data.coins[i].id + "'>" +
+					"<td>" + data.data.coins[i].name + "</td> " +
+					"<td>" + data.data.coins[i].price + "</td>" +
+					"</tr>");
+                i++;
+			});
+			$("<table/>", {
+                //add unstriped for styling and id is for the search function
+				"class": "my-new-list unstriped" , "id":"my-new-list",
+				html: items.join("")
+			}).appendTo(".tableTarget");
+		});
+	});
+</script>
